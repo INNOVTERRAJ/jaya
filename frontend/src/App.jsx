@@ -2,10 +2,32 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  // States for the main content
   const [messages, setMessages] = useState([]);
   const [loveLetter, setLoveLetter] = useState('');
   const [showCalculator, setShowCalculator] = useState(false);
   const [showStory, setShowStory] = useState(false);
+
+  // Photo and flower arrays (add URLs here)
+  const photos = [
+    '/photos/photo1.jpg',
+    '/photos/photo2.jpg',
+    '/photos/photo3.jpg', 
+    '/photos/photo4.jpg',
+    '/photos/photo5.jpg',
+    '/photos/photo6.jpg',
+    '/photos/photo7.jpg',
+    '/photos/photo8.jpg',
+    // Add more photo URLs here
+  ];
+
+  const flowers = [
+    '/flowers/flower1.jpg',
+  ];
 
   // Fetch short love messages from backend
   useEffect(() => {
@@ -23,23 +45,38 @@ function App() {
       .catch(err => console.error(err));
   }, []);
 
-  // Sample photo paths (ensure these files exist in frontend/public/photos/)
-  const photos = [
-    '/photos/photo1.jpg',
-    '/photos/photo2.jpg',
-    '/photos/photo3.jpg',
-    '/photos/photo4.jpg',
-    '/photos/photo5.jpg',
-    '/photos/photo6.jpg',
-    '/photos/photo7.jpg',
-    '/photos/photo8.jpg',
-  ];
+  // Password submission handler
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    if (password === '@jaya$#') {
+      setIsAuthenticated(true);
+      setError('');
+    } else {
+      setError('Incorrect password! Try again ❤️');
+    }
+  };
 
-  // Sample flower image paths (place your flower images in frontend/public/flowers/)
-  const flowers = [
-    '/flowers/flower1.jpg',
-  ];
+  // Password gate
+  if (!isAuthenticated) {
+    return (
+      <div className="password-gate">
+        <div className="password-container">
+          <h2>Enter the Secret Code to Continue</h2>
+          <form onSubmit={handlePasswordSubmit}>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Unlock Love</button>
+          </form>
+          {error && <p className="error-message">{error}</p>}
+        </div>
+      </div>
+    );
+  }
 
+  // Main content after password validation
   return (
     <div className="container">
       <header className="header">
@@ -91,7 +128,7 @@ function App() {
           {showCalculator && (
             <div className="calculator-result">
               <p className="red-text">
-                Error:Seems like we cannot calculate the love percentage as it is infinite, you should take care of your boyfriend—he is rare.
+                Error: Seems like we cannot calculate the love percentage as it is infinite, you should take care of your boyfriend—he is rare.
               </p>
             </div>
           )}
@@ -101,18 +138,18 @@ function App() {
         <section className="love-story">
           <h2>STORY...</h2>
           <div className="envelope" onClick={() => setShowStory(!showStory)}>
-            <p>Click the envelope to read a quick story about jaya</p>
+            <p>Click the envelope to read a quick story about Jaya</p>
           </div>
           {showStory && (
             <div className="story-content">
               <p>
-                So there is this friend of jaya that once told her that she would help jaya with her assignments which
+                So there is this friend of Jaya that once told her that she would help Jaya with her assignments which
                 was delayed because her team partner had lost the entire files and data that they had worked on.
-                So even though her friend said that she would help jaya she did not,
-                so jaya was like why did you make a promise that you could not keep.
-                jaya had to complete the assignments on her own and she was very upset about it.
-                I don't know that girl name that made her upset but whenever i will find that girl i will make her
-                complete my entire semesters assignments again and again.          
+                So even though her friend said that she would help Jaya, she did not,
+                so Jaya was like, "Why did you make a promise that you could not keep?"
+                Jaya had to complete the assignments on her own and she was very upset about it.
+                I don't know the name of the girl that made her upset, but whenever I find her, I will make her
+                complete my entire semester's assignments again and again.
               </p>
             </div>
           )}
