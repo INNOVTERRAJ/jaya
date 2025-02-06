@@ -1,0 +1,197 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  background-image: url("/photos/photo9.jpg");
+  background-size: contain;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Header */
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #c82333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Gallery Section */
+.gallery {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+}
+.gallery h2 {
+  color: #a71d2a;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.gallery-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Short Love Messages Section */
+.messages {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+}
+.messages h2 {
+  color: #a71d2a;
+}
+.love-message {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+/* Love Letter Section with Typewriter Animation */
+.letter {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  animation: fadeIn 2s ease;
+}
+.letter h2 {
+  color: #a71d2a;
+}
+.love-letter {
+  font-size: 1.2rem;
+  white-space: pre-line;
+  color: #444;
+  line-height: 1.6;
+  overflow: hidden;
+  border-right: 2px solid #c82333;
+  animation: typewriter 4s steps(40) 1s forwards;
+}
+
+/* Love Calculator Section */
+.love-calculator {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+.calculator-icon {
+  cursor: pointer;
+  padding: 1rem;
+  border: 2px dashed #c82333;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.calculator-icon:hover {
+  background: rgba(200, 35, 51, 0.1);
+}
+.calc-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #c82333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+.calculator-result {
+  margin-top: 1rem;
+  animation: fadeIn 1.5s ease;
+}
+
+/* Our Story (Envelope) Section */
+.love-story {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+}
+.envelope {
+  width: 150px;
+  height: 100px;
+  margin: 0 auto;
+  background: #c82333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.envelope:hover {
+  transform: scale(1.05);
+}
+.story-content {
+  margin-top: 1rem;
+  animation: fadeIn 1.5s ease;
+}
+
+/* Footer with Flowers Covering Entire Area */
+.footer {
+  position: relative;
+  padding: 2rem 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  background: url("/flowers/flower1.jpg") no-repeat center center;
+  background-size: cover;
+}
+.flower-grid {
+  display: none; 
+}
+
+/* Footer Text */
+.footer p {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .gallery, .messages, .letter, .love-calculator, .love-story {
+    flex: 1 1 30%;
+    margin: 1rem;
+  }
+}
+
+.red-text {
+  color: red;
+  font-weight: bold;
+}
