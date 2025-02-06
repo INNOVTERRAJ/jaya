@@ -9,7 +9,7 @@ function App() {
 
   // Fetch short love messages from backend
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + '/api/messages')
+    fetch('https://jaya-ui8r.onrender.com/api/messages')
       .then(response => response.json())
       .then(data => setMessages(data.messages))
       .catch(err => console.error(err));
@@ -17,7 +17,7 @@ function App() {
 
   // Fetch the full love letter from backend
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + '/api/letter')
+    fetch('https://jaya-ui8r.onrender.com/api/letter')
       .then(response => response.json())
       .then(data => setLoveLetter(data.letter))
       .catch(err => console.error(err));
